@@ -53,10 +53,14 @@ const Robox = (Comp) => {
         order
       }
 
-      const sx = {
+      let sx = {
         boxSizing: 'border-box',
         ..._style(styleProps),
         ...style
+      }
+
+      if (config.renderStyles) {
+        sx = config.renderStyles(sx)
       }
 
       return <Comp {...props} style={sx} />
